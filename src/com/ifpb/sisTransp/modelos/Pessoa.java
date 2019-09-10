@@ -24,6 +24,9 @@ public class Pessoa {
         this.matricula = matricula;
         this.nascimento = nascimento;
     }
+    
+    public Pessoa() {
+    }
 
     public String getNome() {
         return nome;

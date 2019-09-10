@@ -26,6 +26,9 @@ public class AdmCadastro extends Pessoa{
         this.senha = senha;
     }
 
+    public AdmCadastro() {
+    }
+    
     public String getCargo() {
         return cargo;
     }
