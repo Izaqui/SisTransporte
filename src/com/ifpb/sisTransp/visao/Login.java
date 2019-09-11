@@ -5,6 +5,14 @@
  */
 package com.ifpb.sisTransp.visao;
 
+import com.ifpb.sisTransp.Dao.DaoAdm;
+import com.ifpb.sisTransp.interfaces.IdaoAdm;
+import com.ifpb.sisTransp.modelos.AdmCadastro;
+import com.ifpb.sisTransp.modelos.Pessoa;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author kiel
@@ -30,10 +38,10 @@ public class Login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jTextEmailApelido = new javax.swing.JTextField();
+        Password = new javax.swing.JPasswordField();
+        jBEnter = new javax.swing.JButton();
+        jBCadastra = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(3, 223, 223));
@@ -48,30 +56,35 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(111, 234, 81));
         jLabel3.setText("SENHA:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextEmailApelido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextEmailApelidoActionPerformed(evt);
             }
         });
 
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        Password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                PasswordActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(28, 253, 2));
-        jButton1.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(29, 135, 254));
-        jButton1.setText("ENTRAR");
-
-        jButton3.setBackground(new java.awt.Color(28, 253, 2));
-        jButton3.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(29, 135, 254));
-        jButton3.setText("CADASTRO");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jBEnter.setBackground(new java.awt.Color(28, 253, 2));
+        jBEnter.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
+        jBEnter.setForeground(new java.awt.Color(29, 135, 254));
+        jBEnter.setText("ENTRAR");
+        jBEnter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jBEnterActionPerformed(evt);
+            }
+        });
+
+        jBCadastra.setBackground(new java.awt.Color(28, 253, 2));
+        jBCadastra.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
+        jBCadastra.setForeground(new java.awt.Color(29, 135, 254));
+        jBCadastra.setText("CADASTRO");
+        jBCadastra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastraActionPerformed(evt);
             }
         });
 
@@ -88,17 +101,17 @@ public class Login extends javax.swing.JFrame {
                         .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jBEnter, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jBCadastra, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel2))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField1)
-                                    .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))))))
+                                    .addComponent(jTextEmailApelido)
+                                    .addComponent(Password, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))))))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -109,32 +122,49 @@ public class Login extends javax.swing.JFrame {
                 .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextEmailApelido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jBEnter, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBCadastra, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(154, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextEmailApelidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextEmailApelidoActionPerformed
+        
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextEmailApelidoActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    private void PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_PasswordActionPerformed
+
+    private void jBCadastraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastraActionPerformed
+        new CadastroAdm().setVisible(true);
+        this.setVisible(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBCadastraActionPerformed
+
+    private void jBEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEnterActionPerformed
+
+        try {
+            // TODO add your handling code here:
+            System.out.println("Entrou");
+            autenticarAdm();
+        } catch (IOException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jBEnterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,12 +202,33 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JPasswordField Password;
+    private javax.swing.JButton jBCadastra;
+    private javax.swing.JButton jBEnter;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextEmailApelido;
     // End of variables declaration//GEN-END:variables
+    private void autenticarAdm() throws IOException, ClassNotFoundException {
+       String email = jTextEmailApelido.getText();
+       String senha = String.valueOf(Password.getPassword());
+       
+        //AdmC       a.setEndereco(endereco);
+         adastro adm = IdaoAdm.buscarAdministrador(email);
+        DaoAdm dao = new DaoAdm();
+        AdmCadastro adm = new AdmCadastro();
+        
+        adm = dao.buscarAdministrador(email, senha);
+        for (Pessoa a: dao.listarAdministrador()){
+            System.out.println(a.getNome());
+        }
+        
+        if(adm != null){
+            new Menu().setVisible(true);
+            this.dispose();
+            
+        }
+        
+    }
 }

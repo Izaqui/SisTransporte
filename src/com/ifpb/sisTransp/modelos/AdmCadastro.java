@@ -5,13 +5,15 @@
  */
 package com.ifpb.sisTransp.modelos;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  *
  * @author kiel
  */
-public class AdmCadastro extends Pessoa{
+public class AdmCadastro extends Pessoa {
     
     private String cargo;
     private String nickname;
@@ -60,6 +62,43 @@ public class AdmCadastro extends Pessoa{
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 47 * hash + Objects.hashCode(this.cargo);
+        hash = 47 * hash + Objects.hashCode(this.nickname);
+        hash = 47 * hash + Objects.hashCode(this.email);
+        hash = 47 * hash + Objects.hashCode(this.senha);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final AdmCadastro other = (AdmCadastro) obj;
+        if (!Objects.equals(this.cargo, other.cargo)) {
+            return false;
+        }
+        if (!Objects.equals(this.nickname, other.nickname)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        return Objects.equals(this.senha, other.senha);
+    }
+
+    
+    
     
     
     

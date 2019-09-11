@@ -28,48 +28,58 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBCadastroAluno = new javax.swing.JButton();
+        jBDadosAluno = new javax.swing.JButton();
+        jBSair = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton4 = new javax.swing.JButton();
+        jBCadastroInstituicao = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
+        jBCadastroMotorista = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setIcon(new javax.swing.ImageIcon("/home/kiel/NetBeansProjects/SisTransporte/src/com/ifpb/sisTransp/Imagens/onibus.png")); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(23, 121, 195));
-        jButton1.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(29, 237, 22));
-        jButton1.setText("ALUNO");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBCadastroAluno.setBackground(new java.awt.Color(23, 121, 195));
+        jBCadastroAluno.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
+        jBCadastroAluno.setForeground(new java.awt.Color(29, 237, 22));
+        jBCadastroAluno.setText("ALUNO");
+        jBCadastroAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBCadastroAlunoActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(23, 121, 195));
-        jButton2.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(29, 237, 22));
-        jButton2.setText("ALUNO");
-
-        jButton3.setBackground(new java.awt.Color(195, 23, 25));
-        jButton3.setFont(new java.awt.Font("Noto Sans", 1, 48)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(204, 247, 202));
-        jButton3.setText("X");
-        jButton3.setMargin(new java.awt.Insets(5, 5, 0, 0));
-
-        jButton4.setBackground(new java.awt.Color(23, 121, 195));
-        jButton4.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(29, 237, 22));
-        jButton4.setText("INSTITUIÇÃO");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jBDadosAluno.setBackground(new java.awt.Color(23, 121, 195));
+        jBDadosAluno.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
+        jBDadosAluno.setForeground(new java.awt.Color(29, 237, 22));
+        jBDadosAluno.setText("ALUNO");
+        jBDadosAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jBDadosAlunoActionPerformed(evt);
+            }
+        });
+
+        jBSair.setBackground(new java.awt.Color(195, 23, 25));
+        jBSair.setFont(new java.awt.Font("Noto Sans", 1, 48)); // NOI18N
+        jBSair.setForeground(new java.awt.Color(204, 247, 202));
+        jBSair.setText("X");
+        jBSair.setMargin(new java.awt.Insets(5, 5, 0, 0));
+        jBSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSairActionPerformed(evt);
+            }
+        });
+
+        jBCadastroInstituicao.setBackground(new java.awt.Color(23, 121, 195));
+        jBCadastroInstituicao.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
+        jBCadastroInstituicao.setForeground(new java.awt.Color(29, 237, 22));
+        jBCadastroInstituicao.setText("INSTITUIÇÃO");
+        jBCadastroInstituicao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastroInstituicaoActionPerformed(evt);
             }
         });
 
@@ -81,13 +91,13 @@ public class Menu extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(28, 187, 48));
         jLabel3.setText("DADOS");
 
-        jButton6.setBackground(new java.awt.Color(23, 121, 195));
-        jButton6.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(29, 237, 22));
-        jButton6.setText("MOTORISTA");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jBCadastroMotorista.setBackground(new java.awt.Color(23, 121, 195));
+        jBCadastroMotorista.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
+        jBCadastroMotorista.setForeground(new java.awt.Color(29, 237, 22));
+        jBCadastroMotorista.setText("MOTORISTA");
+        jBCadastroMotorista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jBCadastroMotoristaActionPerformed(evt);
             }
         });
 
@@ -99,11 +109,11 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBCadastroAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                        .addComponent(jBCadastroMotorista, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton4))
+                        .addComponent(jBCadastroInstituicao))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -116,7 +126,7 @@ public class Menu extends javax.swing.JFrame {
                                     .addComponent(jSeparator2)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(195, 195, 195)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jBDadosAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(230, 230, 230)
                                 .addComponent(jLabel3)))
@@ -126,7 +136,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(134, 134, 134)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBSair, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
@@ -138,39 +148,58 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jBSair, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBCadastroInstituicao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jBCadastroAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBCadastroMotorista, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBDadosAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBCadastroAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastroAlunoActionPerformed
+        new CadastroAluno().setVisible(true);
+        this.setVisible(false);
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBCadastroAlunoActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jBCadastroInstituicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastroInstituicaoActionPerformed
+        new AddFaculdade().setVisible(true);
+        this.setVisible(false);
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jBCadastroInstituicaoActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jBCadastroMotoristaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastroMotoristaActionPerformed
+        new CadastroMotorista().setVisible(true);
+        this.setVisible(false);
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_jBCadastroMotoristaActionPerformed
+
+    private void jBSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSairActionPerformed
+        new Login().setVisible(true);
+        this.setVisible(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBSairActionPerformed
+
+    private void jBDadosAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDadosAlunoActionPerformed
+        new TelaAluno().setVisible(true);
+        this.setVisible(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBDadosAlunoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,11 +237,11 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jBCadastroAluno;
+    private javax.swing.JButton jBCadastroInstituicao;
+    private javax.swing.JButton jBCadastroMotorista;
+    private javax.swing.JButton jBDadosAluno;
+    private javax.swing.JButton jBSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

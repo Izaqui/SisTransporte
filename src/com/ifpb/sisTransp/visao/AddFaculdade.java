@@ -36,7 +36,7 @@ public class AddFaculdade extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        jBExit = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -65,9 +65,14 @@ public class AddFaculdade extends javax.swing.JFrame {
         jComboBox1.setForeground(new java.awt.Color(23, 106, 198));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PUBLICA", "PARTICULAR" }));
 
-        jButton1.setFont(new java.awt.Font("Noto Sans", 1, 48)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(231, 7, 33));
-        jButton1.setText("X");
+        jBExit.setFont(new java.awt.Font("Noto Sans", 1, 48)); // NOI18N
+        jBExit.setForeground(new java.awt.Color(231, 7, 33));
+        jBExit.setText("X");
+        jBExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBExitActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(23, 142, 212));
@@ -85,7 +90,7 @@ public class AddFaculdade extends javax.swing.JFrame {
                 .addGap(82, 82, 82)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBExit, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(53, 53, 53)
@@ -117,7 +122,7 @@ public class AddFaculdade extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(51, 51, 51)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jBExit, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
@@ -143,6 +148,12 @@ public class AddFaculdade extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExitActionPerformed
+        new Menu().setVisible(true);
+        this.setVisible(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,7 +191,7 @@ public class AddFaculdade extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBExit;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;

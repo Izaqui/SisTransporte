@@ -48,8 +48,8 @@ public class CadastroAdm extends javax.swing.JFrame {
         passSenha = new javax.swing.JPasswordField();
         comboCargo = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jBSalvar = new javax.swing.JButton();
+        jBSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,20 +91,25 @@ public class CadastroAdm extends javax.swing.JFrame {
         comboCargo.setForeground(new java.awt.Color(31, 212, 37));
         comboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SECRETARIO", "ADMINISTRADOR" }));
 
-        jButton1.setBackground(new java.awt.Color(67, 54, 53));
-        jButton1.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(54, 203, 70));
-        jButton1.setText("SALVAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBSalvar.setBackground(new java.awt.Color(67, 54, 53));
+        jBSalvar.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
+        jBSalvar.setForeground(new java.awt.Color(54, 203, 70));
+        jBSalvar.setText("SALVAR");
+        jBSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBSalvarActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(67, 54, 53));
-        jButton2.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(54, 203, 70));
-        jButton2.setText("SAIR");
+        jBSair.setBackground(new java.awt.Color(67, 54, 53));
+        jBSair.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
+        jBSair.setForeground(new java.awt.Color(54, 203, 70));
+        jBSair.setText("SAIR");
+        jBSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -129,9 +134,9 @@ public class CadastroAdm extends javax.swing.JFrame {
                             .addComponent(comboCargo, 0, 330, Short.MAX_VALUE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jBSair, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel4)
@@ -152,9 +157,9 @@ public class CadastroAdm extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(textApelido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textApelido, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(comboCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6)
@@ -174,8 +179,8 @@ public class CadastroAdm extends javax.swing.JFrame {
                     .addComponent(passConfirmSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jBSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBSair, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(201, Short.MAX_VALUE))
         );
 
@@ -191,12 +196,12 @@ public class CadastroAdm extends javax.swing.JFrame {
     }//GEN-LAST:event_passConfirmSenhaActionPerformed
 
 //    Este método representa a ação de clique do botão salvar
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalvarActionPerformed
 //        Recuperar os dados do formulário (Swing)
         String cargo = (String) comboCargo.getSelectedItem();
         String nickname = textApelido.getText();
         String email = textEmail.getText();
-
+        
         String senha = Arrays.toString(passSenha.getPassword());
         String confirmacaoSenha = Arrays.toString(passConfirmSenha.getPassword());
         
@@ -224,10 +229,11 @@ public class CadastroAdm extends javax.swing.JFrame {
                     "Administrador salvo com sucesso!");
 
 //        Voltando ao menu inicial do sistema e excluindo esta visualização de tela
-            new Menu().setVisible(true);
+            new Login().setVisible(true);
             this.dispose();
 
         } catch (IOException | ClassNotFoundException ex) {
+            System.out.println(ex);
 //        Exibindo mensagem de erro
             JOptionPane
                     .showMessageDialog(null,
@@ -235,7 +241,14 @@ public class CadastroAdm extends javax.swing.JFrame {
                                     + "Preencha os campos e tente novamente!");
         }
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBSalvarActionPerformed
+
+    private void jBSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSairActionPerformed
+
+       new Login().setVisible(true);
+       this.setVisible(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -274,8 +287,8 @@ public class CadastroAdm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> comboCargo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jBSair;
+    private javax.swing.JButton jBSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

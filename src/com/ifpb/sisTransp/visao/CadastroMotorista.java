@@ -46,9 +46,9 @@ public class CadastroMotorista extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jSpinner1 = new javax.swing.JSpinner();
         jTextField6 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBExit = new javax.swing.JButton();
+        jBSair = new javax.swing.JButton();
+        jBNovo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,18 +102,23 @@ public class CadastroMotorista extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(65, 152, 250));
         jLabel10.setText("CPF:");
 
-        jButton1.setBackground(new java.awt.Color(76, 168, 237));
-        jButton1.setFont(new java.awt.Font("Noto Sans", 1, 48)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(232, 22, 27));
-        jButton1.setText("X");
+        jBExit.setBackground(new java.awt.Color(76, 168, 237));
+        jBExit.setFont(new java.awt.Font("Noto Sans", 1, 48)); // NOI18N
+        jBExit.setForeground(new java.awt.Color(232, 22, 27));
+        jBExit.setText("X");
+        jBExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBExitActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(53, 243, 113));
-        jButton2.setText("SALVAR");
+        jBSair.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
+        jBSair.setForeground(new java.awt.Color(53, 243, 113));
+        jBSair.setText("SALVAR");
 
-        jButton3.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(53, 243, 113));
-        jButton3.setText("NOVO");
+        jBNovo.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
+        jBNovo.setForeground(new java.awt.Color(53, 243, 113));
+        jBNovo.setText("NOVO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,7 +128,7 @@ public class CadastroMotorista extends javax.swing.JFrame {
                 .addGap(265, 265, 265)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBExit, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80))
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
@@ -160,9 +165,9 @@ public class CadastroMotorista extends javax.swing.JFrame {
                                 .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(70, 70, 70)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jBSair, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(131, 131, 131)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jBNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addGap(31, 31, 31)
@@ -181,7 +186,7 @@ public class CadastroMotorista extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jBExit, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
@@ -223,14 +228,20 @@ public class CadastroMotorista extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBSair, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExitActionPerformed
+        new Menu().setVisible(true);
+        this.setVisible(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -268,9 +279,9 @@ public class CadastroMotorista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jBExit;
+    private javax.swing.JButton jBNovo;
+    private javax.swing.JButton jBSair;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;

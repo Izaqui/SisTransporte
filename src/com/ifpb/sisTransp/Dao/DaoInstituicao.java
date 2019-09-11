@@ -5,8 +5,7 @@
  */
 package com.ifpb.sisTransp.Dao;
 
-import com.ifpb.sisTransp.interfaces.IdaoAdm;
-import com.ifpb.sisTransp.modelos.AdmCadastro;
+import com.ifpb.sisTransp.modelos.Instituicao;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -20,14 +19,14 @@ import java.util.List;
  *
  * @author kiel
  */
-public class DaoAdm implements IdaoAdm{
+public class DaoInstituicao {
     
     private final File arquivo;
     
-    private AdmCadastro administrador;
-    public DaoAdm(){
+    Instituicao isntituicao;
+    public DaoInstituicao(){
     
-        arquivo = new File("Adm.txt");
+        arquivo = new File("Instituicao.bin");
         
         if (!arquivo.exists()) {
          
@@ -41,30 +40,29 @@ public class DaoAdm implements IdaoAdm{
         
     }
 
-    @Override
-    public boolean addAdministrador(AdmCadastro adm) throws IOException, ClassNotFoundException{
-           List<AdmCadastro> listaAdministrador = null;        
+    public boolean addNome(Instituicao inst) throws IOException, ClassNotFoundException{
+           List<Instituicao> listaInst = null;        
            
            if (arquivo.length() > 0) {
             ObjectInputStream in = new ObjectInputStream(
                     new FileInputStream(arquivo));
 
-            listaAdministrador = (List<AdmCadastro>) in.readObject();
+            listaInst = (List<Instituicao>) in.readObject();
         } else {
-            listaAdministrador = new ArrayList<>();
+            listaInst = new ArrayList<>();
         }
         
-        for(AdmCadastro a : listaAdministrador){
-            if(a.getEmail().equals(adm.getEmail())){
+        for(Instituicao a : listaInst){
+            if(a.getNomeInstituicao().equals(inst.getNomeInstituicao())){
                 return false;
             }
         }
         
        
-        if (listaAdministrador.add(adm)) {
+        if (listaInst.add(inst)) {
             try (ObjectOutputStream out = new ObjectOutputStream(
                     new FileOutputStream(arquivo))) {
-                out.writeObject(listaAdministrador);
+                out.writeObject(listaInst);
             }
             
             return true;
@@ -74,26 +72,25 @@ public class DaoAdm implements IdaoAdm{
         }
     }
 
-    @Override
-    public boolean removeAdministrador(String email) throws IOException, ClassNotFoundException {
-        List<AdmCadastro> listaAdm;        
+    public boolean removeInstituicao(String email) throws IOException, ClassNotFoundException {
+        List<Instituicao> listaInst;        
         
         if (arquivo.length() > 0) {
             ObjectInputStream in = new ObjectInputStream(
                     new FileInputStream(arquivo));
 
-            listaAdm = (List<AdmCadastro>) in.readObject();
+            listaInst = (List<Instituicao>) in.readObject();
         } else {
             return false;
         }
         
         
-        for(int i=0; i<listaAdm.size(); i++){
+        for(int i=0; i<listaInst.size(); i++){
         
-            if(listaAdm.get(i).getEmail().equals(email)){
-                listaAdm.remove(i); 
+            if(listaInst.get(i).getNomeInstituicao().equals(nomeInstituicao)){
+                listaInst.remove(i); 
                 ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(arquivo));
-                out.writeObject(listaAdm);
+                out.writeObject(listaInst);
                 out.close();
                 return true;
             }
@@ -102,24 +99,24 @@ public class DaoAdm implements IdaoAdm{
         return false;
     }
 
-    @Override
-    public boolean atualizarAdministrador(String email, AdmCadastro adm) throws IOException, ClassNotFoundException {
-        List<AdmCadastro> listaAdm;        
+    public boolean atualizarAdministrador(String email, Instituicao inst) throws IOException, ClassNotFoundException {
+        List<Instituicao> listaAdm;        
         
         if (arquivo.length() > 0) {
             ObjectInputStream in = new ObjectInputStream(
                     new FileInputStream(arquivo));
 
-            listaAdm = (List<AdmCadastro>) in.readObject();
+            listaAdm = (List<Instituicao>) in.readObject();
         } else {
             listaAdm = new ArrayList<>();
         }
         
-        for(AdmCadastro a : listaAdm){
-            if(a.getEmail().equals(email)){
-                a.setEmail(adm.getEmail());
-                a.setNome(adm.getNome());
-                a.setSenha(adm.getSenha());
+        for(Instituicao a : listaAdm){
+            if(a.getNomeInstituicao().equals(nomeInstituicao)){
+                a.setNomeInstituicao(inst.getNomeInstituicao());
+                a.setLocalidade(inst.getLocalidade());
+                a.setHorariosFuncionamento(inst.getHorariosFuncionamento());
+                
                 return true;
             }
         }
@@ -127,26 +124,22 @@ public class DaoAdm implements IdaoAdm{
         return false;
     }
 
-    @Override
-    public AdmCadastro buscarAdministrador(String email, String senha) throws IOException, ClassNotFoundException {
-     for(AdmCadastro a : listarAdministrador()){
-            if((a.getEmail().equals(email)) && (a.getSenha()).equals(senha))
+    public Instituicao buscarAdministrador(String email) throws IOException, ClassNotFoundException {
+     for(Instituicao a : listarAdministrador()){
+            if(a.getNomeInstituicao().equals(nomeInstituicao))
                 return a;
         }
         return null;   
     }
 
-    @Override
-    public List<AdmCadastro> listarAdministrador() throws IOException, ClassNotFoundException {
+    public List<Instituicao> listarAdministrador() throws IOException, ClassNotFoundException {
         if (arquivo.length() > 0) {
             ObjectInputStream in = new ObjectInputStream(
                     new FileInputStream(arquivo));
 
-            return (List<AdmCadastro>) in.readObject();
+            return (List<Instituicao>) in.readObject();
         } else {
             return new ArrayList<>();
         }
     }
-    
-    
 }
