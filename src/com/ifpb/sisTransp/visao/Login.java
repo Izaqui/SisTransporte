@@ -6,7 +6,6 @@
 package com.ifpb.sisTransp.visao;
 
 import com.ifpb.sisTransp.Dao.DaoAdm;
-import com.ifpb.sisTransp.interfaces.IdaoAdm;
 import com.ifpb.sisTransp.modelos.AdmCadastro;
 import com.ifpb.sisTransp.modelos.Pessoa;
 import java.io.IOException;
@@ -215,16 +214,18 @@ public class Login extends javax.swing.JFrame {
        String senha = String.valueOf(Password.getPassword());
        
         //AdmC       a.setEndereco(endereco);
-         adastro adm = IdaoAdm.buscarAdministrador(email);
+         //AdmCadastro adm = IdaoAdm.buscarAdministrador(email);
         DaoAdm dao = new DaoAdm();
         AdmCadastro adm = new AdmCadastro();
+        
+        dao.listarAdministrador().forEach(System.out::println);
         
         adm = dao.buscarAdministrador(email, senha);
         for (Pessoa a: dao.listarAdministrador()){
             System.out.println(a.getNome());
         }
         
-        if(adm != null){
+        if(adm == null){
             new Menu().setVisible(true);
             this.dispose();
             

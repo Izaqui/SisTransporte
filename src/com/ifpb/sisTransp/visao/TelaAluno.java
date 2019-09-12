@@ -6,7 +6,7 @@
 package com.ifpb.sisTransp.visao;
 
 import com.ifpb.sisTransp.Dao.DaoAluno;
-import com.ifpb.sisTransp.interfaces.IdaoAluno;
+//import com.ifpb.sisTransp.interfaces.IdaoAluno;
 import com.ifpb.sisTransp.modelos.CadastroAlunos;
 import java.util.List;
 import java.io.IOException;
@@ -88,7 +88,6 @@ public class TelaAluno extends javax.swing.JFrame {
 
         jBPesquisa.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jBPesquisa.setIcon(new javax.swing.ImageIcon("/home/kiel/NetBeansProjects/SisTransporte/src/com/ifpb/sisTransp/Imagens/icons8-search-48.png")); // NOI18N
-        jBPesquisa.setActionCommand("");
         jBPesquisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBPesquisaActionPerformed(evt);
@@ -138,10 +137,9 @@ public class TelaAluno extends javax.swing.JFrame {
             }
         });
 
-        jBsair.setBackground(new java.awt.Color(242, 38, 15));
         jBsair.setFont(new java.awt.Font("SansSerif", 1, 48)); // NOI18N
         jBsair.setForeground(new java.awt.Color(220, 247, 214));
-        jBsair.setText("X");
+        jBsair.setIcon(new javax.swing.ImageIcon("/home/kiel/NetBeansProjects/SisTransporte/src/com/ifpb/sisTransp/Imagens/back.png")); // NOI18N
         jBsair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBsairActionPerformed(evt);
@@ -347,7 +345,7 @@ public class TelaAluno extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaAtualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(this.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(TelaAtualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
@@ -432,9 +430,9 @@ public class TelaAluno extends javax.swing.JFrame {
                 CadastroAlunos a = daoAluno.buscarAlunoCpf(cpfAntigo);
                 a.setNome(nome);
                 a.setCpf(cpfNovo);
-                a.setEmail(emailAlu);
-                a.setTelefone(telefone);
-                a.setEndereco(endereco);
+                //a.setEmail(emailAlu);
+                //a.setTelefone(telefone);
+                //a.setEndereco(endereco);
                 
                 System.out.println(a.toString());
                 
@@ -497,9 +495,9 @@ public class TelaAluno extends javax.swing.JFrame {
         CadastroAlunos aluno = daoAluno.buscarAlunoCpf(cpf);
         
         List<CadastroAluno> lista = new ArrayList<>();
-        lista.add(aluno);
+        //lista.add(aluno);
         
-        tabela.addList(lista);
-        tabelaAlunos.setModel(tabela);
+       // tabela.addList(lista);
+        //tabelaAlunos.setModel(tabela);
     }
 }

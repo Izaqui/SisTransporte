@@ -5,7 +5,6 @@
  */
 package com.ifpb.sisTransp.modelos;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -97,9 +96,10 @@ public class AdmCadastro extends Pessoa {
         return Objects.equals(this.senha, other.senha);
     }
 
-    
-    
-    
-    
+    @Override
+    public String toString() {
+        return "AdmCadastro{" + "cargo=" + cargo + ", nickname=" + nickname 
+                + ", email=" + email + ", senha=" + senha + '}';
+    }
     
 }

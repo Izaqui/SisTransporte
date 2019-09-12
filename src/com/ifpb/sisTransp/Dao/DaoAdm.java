@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -60,7 +61,6 @@ public class DaoAdm implements IdaoAdm{
             }
         }
         
-       
         if (listaAdministrador.add(adm)) {
             try (ObjectOutputStream out = new ObjectOutputStream(
                     new FileOutputStream(arquivo))) {
@@ -141,10 +141,9 @@ public class DaoAdm implements IdaoAdm{
         if (arquivo.length() > 0) {
             ObjectInputStream in = new ObjectInputStream(
                     new FileInputStream(arquivo));
-
             return (List<AdmCadastro>) in.readObject();
         } else {
-            return new ArrayList<>();
+            return Collections.emptyList();
         }
     }
     

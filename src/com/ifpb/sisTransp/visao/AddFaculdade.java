@@ -67,7 +67,7 @@ public class AddFaculdade extends javax.swing.JFrame {
 
         jBExit.setFont(new java.awt.Font("Noto Sans", 1, 48)); // NOI18N
         jBExit.setForeground(new java.awt.Color(231, 7, 33));
-        jBExit.setText("X");
+        jBExit.setIcon(new javax.swing.ImageIcon("/home/kiel/NetBeansProjects/SisTransporte/src/com/ifpb/sisTransp/Imagens/back.png")); // NOI18N
         jBExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBExitActionPerformed(evt);

@@ -62,10 +62,10 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        jBSair.setBackground(new java.awt.Color(195, 23, 25));
+        jBSair.setBackground(new java.awt.Color(243, 228, 221));
         jBSair.setFont(new java.awt.Font("Noto Sans", 1, 48)); // NOI18N
         jBSair.setForeground(new java.awt.Color(204, 247, 202));
-        jBSair.setText("X");
+        jBSair.setIcon(new javax.swing.ImageIcon("/home/kiel/NetBeansProjects/SisTransporte/src/com/ifpb/sisTransp/Imagens/back.png")); // NOI18N
         jBSair.setMargin(new java.awt.Insets(5, 5, 0, 0));
         jBSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

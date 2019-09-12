@@ -102,10 +102,9 @@ public class CadastroMotorista extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(65, 152, 250));
         jLabel10.setText("CPF:");
 
-        jBExit.setBackground(new java.awt.Color(76, 168, 237));
         jBExit.setFont(new java.awt.Font("Noto Sans", 1, 48)); // NOI18N
         jBExit.setForeground(new java.awt.Color(232, 22, 27));
-        jBExit.setText("X");
+        jBExit.setIcon(new javax.swing.ImageIcon("/home/kiel/NetBeansProjects/SisTransporte/src/com/ifpb/sisTransp/Imagens/back.png")); // NOI18N
         jBExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBExitActionPerformed(evt);

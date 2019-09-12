@@ -126,7 +126,7 @@ public class CadastroAluno extends javax.swing.JFrame {
 
         jBSair.setFont(new java.awt.Font("Noto Sans", 1, 48)); // NOI18N
         jBSair.setForeground(new java.awt.Color(231, 23, 28));
-        jBSair.setText("X");
+        jBSair.setIcon(new javax.swing.ImageIcon("/home/kiel/NetBeansProjects/SisTransporte/src/com/ifpb/sisTransp/Imagens/back.png")); // NOI18N
         jBSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBSairActionPerformed(evt);

@@ -13,7 +13,7 @@ import java.util.Objects;
  *
  * @author kiel
  */
-public class Pessoa implements Serializable{
+public class Pessoa implements Serializable {
     
     private String nome;
     private String cpf;
