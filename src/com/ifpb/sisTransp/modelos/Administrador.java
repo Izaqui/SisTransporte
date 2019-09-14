@@ -13,14 +13,14 @@ import java.util.Objects;
  *
  * @author kiel
  */
-public class AdmCadastro extends Pessoa implements Serializable{
+public class Administrador extends Pessoa implements Serializable{
     
     private String cargo;
     private String nickname;
     private String email;
     private String senha;
 
-    public AdmCadastro(String cargo, String nickname, String email, String senha, String nome, String cpf, String matricula, LocalDate nascimento) {
+    public Administrador(String cargo, String nickname, String email, String senha, String nome, String cpf, String matricula, LocalDate nascimento) {
         super(nome, cpf, matricula, nascimento);
         this.cargo = cargo;
         this.nickname = nickname;
@@ -28,7 +28,7 @@ public class AdmCadastro extends Pessoa implements Serializable{
         this.senha = senha;
     }
 
-    public AdmCadastro() {
+    public Administrador() {
     }
     
     public String getCargo() {
@@ -84,7 +84,7 @@ public class AdmCadastro extends Pessoa implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final AdmCadastro other = (AdmCadastro) obj;
+        final Administrador other = (Administrador) obj;
         if (!Objects.equals(this.cargo, other.cargo)) {
             return false;
         }

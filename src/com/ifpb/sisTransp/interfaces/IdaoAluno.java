@@ -5,7 +5,7 @@
  */
 package com.ifpb.sisTransp.interfaces;
 
-import com.ifpb.sisTransp.modelos.CadastroAlunos;
+import com.ifpb.sisTransp.modelos.Aluno;
 import java.util.List;
 import java.io.IOException;
 
@@ -15,11 +15,11 @@ import java.io.IOException;
  */
 public interface IdaoAluno {
     
-    public boolean addAluno(CadastroAlunos aluno) throws IOException, ClassNotFoundException;
+    public boolean addAluno(Aluno aluno) throws IOException, ClassNotFoundException;
     public boolean RemoveAluno(String cpf)throws IOException, ClassNotFoundException;
-    public boolean atualizarAluno(String cpf, CadastroAlunos aluno)throws IOException, ClassNotFoundException;
-    public CadastroAlunos buscarAlunoCpf(String cpf)throws IOException, ClassNotFoundException;
-    public List<CadastroAlunos> listarAluno()throws IOException, ClassNotFoundException;
+    public boolean atualizarAluno(String cpf, Aluno aluno)throws IOException, ClassNotFoundException;
+    public Aluno buscarAlunoCpf(String cpf)throws IOException, ClassNotFoundException;
+    public List<Aluno> listarAluno()throws IOException, ClassNotFoundException;
     
     
 }

@@ -6,7 +6,7 @@
 package com.ifpb.sisTransp.visao;
 
 import com.ifpb.sisTransp.Dao.DaoAdm;
-import com.ifpb.sisTransp.modelos.AdmCadastro;
+import com.ifpb.sisTransp.modelos.Administrador;
 import com.ifpb.sisTransp.modelos.Pessoa;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -225,9 +225,9 @@ public class Login extends javax.swing.JFrame {
     private void autenticarAdm() throws IOException, ClassNotFoundException {
        String email = jTextEmail.getText();
        String senha = String.valueOf(Password.getPassword());
-        System.out.println(email);
-        System.out.println(senha);
-        AdmCadastro adm = daoA.buscarAdministrador(email, senha);
+        //System.out.println(email);
+        //System.out.println(senha);
+        Administrador adm = daoA.buscarAdministrador(email, senha);
         System.out.println(adm.getEmail());
         if(adm.getSenha().equals(senha)){
             new Menu().setVisible(true);
@@ -240,7 +240,7 @@ public class Login extends javax.swing.JFrame {
        String senha = String.valueOf(Password.getPassword());
 
         DaoAdm dao = new DaoAdm();
-        AdmCadastro adm = new AdmCadastro();
+        Administrador adm = new Administrador();
         
         dao.listarAdministrador().forEach(System.out::println);
         

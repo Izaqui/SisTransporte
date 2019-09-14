@@ -6,7 +6,7 @@
 package com.ifpb.sisTransp.Dao;
 
 import com.ifpb.sisTransp.interfaces.IdaoAdm;
-import com.ifpb.sisTransp.modelos.AdmCadastro;
+import com.ifpb.sisTransp.modelos.Administrador;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -25,7 +25,7 @@ public class DaoAdm implements IdaoAdm{
     
     private final File arquivo;
     
-    private AdmCadastro administrador;
+    private Administrador administrador;
     public DaoAdm(){
     
         arquivo = new File("Adm.bin");
@@ -43,19 +43,19 @@ public class DaoAdm implements IdaoAdm{
     }
 
     @Override
-    public boolean addAdministrador(AdmCadastro adm) throws IOException, ClassNotFoundException{
-           List<AdmCadastro> listaAdministrador = null;        
+    public boolean addAdministrador(Administrador adm) throws IOException, ClassNotFoundException{
+           List<Administrador> listaAdministrador = null;        
            
            if (arquivo.length() > 0) {
             ObjectInputStream in = new ObjectInputStream(
                     new FileInputStream(arquivo));
 
-            listaAdministrador = (List<AdmCadastro>) in.readObject();
+            listaAdministrador = (List<Administrador>) in.readObject();
         } else {
             listaAdministrador = new ArrayList<>();
         }
         
-        for(AdmCadastro a : listaAdministrador){
+        for(Administrador a : listaAdministrador){
             if(a.getEmail().equals(adm.getEmail())){
                 return false;
             }
@@ -76,13 +76,13 @@ public class DaoAdm implements IdaoAdm{
 
     @Override
     public boolean removeAdministrador(String email) throws IOException, ClassNotFoundException {
-        List<AdmCadastro> listaAdm;        
+        List<Administrador> listaAdm;        
         
         if (arquivo.length() > 0) {
             ObjectInputStream in = new ObjectInputStream(
                     new FileInputStream(arquivo));
 
-            listaAdm = (List<AdmCadastro>) in.readObject();
+            listaAdm = (List<Administrador>) in.readObject();
         } else {
             return false;
         }
@@ -103,19 +103,19 @@ public class DaoAdm implements IdaoAdm{
     }
 
     @Override
-    public boolean atualizarAdministrador(String email, AdmCadastro adm) throws IOException, ClassNotFoundException {
-        List<AdmCadastro> listaAdm;        
+    public boolean atualizarAdministrador(String email, Administrador adm) throws IOException, ClassNotFoundException {
+        List<Administrador> listaAdm;        
         
         if (arquivo.length() > 0) {
             ObjectInputStream in = new ObjectInputStream(
                     new FileInputStream(arquivo));
 
-            listaAdm = (List<AdmCadastro>) in.readObject();
+            listaAdm = (List<Administrador>) in.readObject();
         } else {
             listaAdm = new ArrayList<>();
         }
         
-        for(AdmCadastro a : listaAdm){
+        for(Administrador a : listaAdm){
             if(a.getEmail().equals(email)){
                 a.setEmail(adm.getEmail());
                 a.setNome(adm.getNome());
@@ -128,8 +128,8 @@ public class DaoAdm implements IdaoAdm{
     }
 
     @Override
-    public AdmCadastro buscarAdministrador(String email, String senha) throws IOException, ClassNotFoundException {
-     for(AdmCadastro a : listarAdministrador()){
+    public Administrador buscarAdministrador(String email, String senha) throws IOException, ClassNotFoundException {
+     for(Administrador a : listarAdministrador()){
             System.out.println(a.getEmail());
             System.out.println(a.getSenha());
             if((a.getEmail().equals(email)) && (a.getSenha()).equals(senha)){
@@ -142,11 +142,11 @@ public class DaoAdm implements IdaoAdm{
 
 
     @Override
-    public List<AdmCadastro> listarAdministrador() throws IOException, ClassNotFoundException {
+    public List<Administrador> listarAdministrador() throws IOException, ClassNotFoundException {
         if (arquivo.length() > 0) {
             ObjectInputStream in = new ObjectInputStream(
                     new FileInputStream(arquivo));
-            return (List<AdmCadastro>) in.readObject();
+            return (List<Administrador>) in.readObject();
         } else {
             return Collections.emptyList();
         }

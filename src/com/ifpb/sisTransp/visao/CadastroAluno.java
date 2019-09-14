@@ -6,12 +6,14 @@
 package com.ifpb.sisTransp.visao;
 
 import com.ifpb.sisTransp.Dao.DaoAluno;
+import com.ifpb.sisTransp.modelos.Aluno;
 import com.ifpb.sisTransp.modelos.TipoPP;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -286,15 +288,56 @@ public class CadastroAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_jBSairActionPerformed
 
     private void jBSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalvarActionPerformed
+        
+        String nome = jTNome.getText();
+        String cpf = jFCpf.getText();
+        String matricula = jFMatricula.getText();
+        String nascimento = jFNascimento.getText();
+        String instituicao = (String) jCTipo.getSelectedItem();
+        String cidade = jTCidade.getText();
+        String curso = jTCurso.getText();
+        String email = jTEmail.getText();
+        String telefone = jFTelefone.getText();
+        String horario = jTHorario.getText();
+        
+        
+//        Criando objeto aluno e colocando os dados do formulário no objeto
+        Aluno aluno = new Aluno();
+        aluno.setNome(nome);
+        aluno.setCpf(cpf);
+        aluno.setMatricula(matricula);
+        aluno.setNascimento(LocalDate.MIN);
+        //aluno.setInstituicao(instituicao);
+        aluno.setCidadeInstituicao(cidade);
+        aluno.setCurso(curso);
+        aluno.setContatoEmail(email);
+        aluno.setContatoTelefone(telefone);
+        aluno.setHorarios(horario);
+        
+        DaoAluno daoAluno = new DaoAluno();
         try {
-            
-            novoAluno();
-            
+            daoAluno.addAluno(aluno);
         } catch (IOException ex) {
             Logger.getLogger(CadastroAluno.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(CadastroAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+//        Exibindo mensagem de erro
+//        Exibindo mensagem de sucesso
+        JOptionPane.showMessageDialog(null,
+                "Cadastro efetuado com sucesso!");
+        //        Voltando ao menu inicial do sistema e excluindo esta visualização de tela
+        new Menu().setVisible(true);
+        this.dispose();
+        /*try {
+            
+            novoAluno();
+        } catch (IOException ex) {
+            Logger.getLogger(CadastroAluno.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CadastroAluno.class.getName()).log(Level.SEVERE, null, ex);
+        } */
         // TODO add your handling code here:
     }//GEN-LAST:event_jBSalvarActionPerformed
 

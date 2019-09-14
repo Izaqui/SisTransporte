@@ -5,7 +5,7 @@
  */
 package com.ifpb.sisTransp.interfaces;
 
-import com.ifpb.sisTransp.modelos.AdmCadastro;
+import com.ifpb.sisTransp.modelos.Administrador;
 import java.util.List;
 import java.io.IOException;
 
@@ -15,10 +15,10 @@ import java.io.IOException;
  * @author kiel
  */
 public interface IdaoAdm {
-    public boolean addAdministrador(AdmCadastro adm)throws IOException, ClassNotFoundException;
+    public boolean addAdministrador(Administrador adm)throws IOException, ClassNotFoundException;
     public boolean removeAdministrador(String email)throws IOException, ClassNotFoundException;
-    public boolean atualizarAdministrador(String email, AdmCadastro adm)throws IOException, ClassNotFoundException;
-    public AdmCadastro buscarAdministrador(String email, String senha)throws IOException, ClassNotFoundException;
-    public List<AdmCadastro> listarAdministrador()throws IOException, ClassNotFoundException;
+    public boolean atualizarAdministrador(String email, Administrador adm)throws IOException, ClassNotFoundException;
+    public Administrador buscarAdministrador(String email, String senha)throws IOException, ClassNotFoundException;
+    public List<Administrador> listarAdministrador()throws IOException, ClassNotFoundException;
     
 }

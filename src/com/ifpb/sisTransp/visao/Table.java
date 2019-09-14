@@ -6,7 +6,7 @@
 package com.ifpb.sisTransp.visao;
 
 import com.ifpb.sisTransp.Dao.DaoAluno;
-import com.ifpb.sisTransp.modelos.CadastroAlunos;
+import com.ifpb.sisTransp.modelos.Aluno;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -17,7 +17,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class Table extends AbstractTableModel{
    
-    private List<CadastroAlunos> alunoLista = new ArrayList<>();
+    private List<Aluno> alunoLista = new ArrayList<>();
     private final String [] colunas = {"Nome", "CPF","Matricula","Data de Nascimento","Instituição","Cidade","Curso","Email","Telefone","Horarios"};
 
     @Override
@@ -73,14 +73,14 @@ public class Table extends AbstractTableModel{
         
     }
     
-   public void addRow(CadastroAlunos a){
+   public void addRow(Aluno a){
    
        this.alunoLista.add(a);
        this.fireTableDataChanged();
        
    } 
    
-   public void addList(List<CadastroAlunos> lista){
+   public void addList(List<Aluno> lista){
    
        this.alunoLista = lista;
        this.fireTableDataChanged();

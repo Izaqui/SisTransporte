@@ -6,12 +6,8 @@
 package com.ifpb.sisTransp.visao;
 
 import com.ifpb.sisTransp.Dao.DaoAdm;
-import com.ifpb.sisTransp.modelos.AdmCadastro;
+import com.ifpb.sisTransp.modelos.Administrador;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -214,7 +210,7 @@ public class CadastroAdm extends javax.swing.JFrame {
         }
         
 //        Criando objeto administrador e colocando os dados do formulário no objeto
-        AdmCadastro admCadastro = new AdmCadastro();
+        Administrador admCadastro = new Administrador();
         admCadastro.setCargo(cargo);
         admCadastro.setNickname(nickname);
         admCadastro.setEmail(email);
@@ -280,6 +276,7 @@ public class CadastroAdm extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new CadastroAdm().setVisible(true);
             }

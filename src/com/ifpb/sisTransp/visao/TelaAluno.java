@@ -7,7 +7,7 @@ package com.ifpb.sisTransp.visao;
 
 import com.ifpb.sisTransp.Dao.DaoAluno;
 //import com.ifpb.sisTransp.interfaces.IdaoAluno;
-import com.ifpb.sisTransp.modelos.CadastroAlunos;
+import com.ifpb.sisTransp.modelos.Aluno;
 import java.util.List;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -58,12 +58,10 @@ public class TelaAluno extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         JtNome = new javax.swing.JTextField();
         cpfAluno = new javax.swing.JFormattedTextField();
         jTEmail = new javax.swing.JTextField();
         jFTelefone = new javax.swing.JFormattedTextField();
-        jTEndereco = new javax.swing.JTextField();
         jBEditar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jBsair = new javax.swing.JButton();
@@ -105,9 +103,6 @@ public class TelaAluno extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel6.setText("Telefone:");
-
-        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel7.setText("Endereço:");
 
         try {
             cpfAluno.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -182,13 +177,9 @@ public class TelaAluno extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTEndereco)
-                            .addComponent(jFTelefone)))
+                        .addComponent(jLabel6)
+                        .addGap(17, 17, 17)
+                        .addComponent(jFTelefone))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -233,11 +224,7 @@ public class TelaAluno extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel6)
-                                    .addComponent(jFTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jTEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jFTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
                                 .addComponent(jBEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -379,13 +366,11 @@ public class TelaAluno extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTEmail;
-    private javax.swing.JTextField jTEndereco;
     private javax.swing.JTable tabelaAlunos;
     // End of variables declaration//GEN-END:variables
 
@@ -394,7 +379,7 @@ public class TelaAluno extends javax.swing.JFrame {
             
             
         try {
-            List<CadastroAlunos> listaAlunos = new ArrayList<>(); 
+            List<Aluno> listaAlunos = new ArrayList<>(); 
             listaAlunos = daoAluno.listarAluno();
             //tabela.addList(listaAlunos);
            // tabelaAlunos.setModel(tabela);
@@ -426,15 +411,13 @@ public class TelaAluno extends javax.swing.JFrame {
                 String cpfNovo = cpfAluno.getText();
                 String emailAlu = jTEmail.getText();
                 String telefone = jFTelefone.getText();
-                String endereco = jTEndereco.getText();
                 
                 //atualizar dados
-                CadastroAlunos a = daoAluno.buscarAlunoCpf(cpfAntigo);
+                Aluno a = daoAluno.buscarAlunoCpf(cpfAntigo);
                 a.setNome(nome);
                 a.setCpf(cpfNovo);
-                //a.setEmail(emailAlu);
-                //a.setTelefone(telefone);
-                //a.setEndereco(endereco);
+                a.setContatoEmail(email);
+                a.setContatoTelefone(telefone);
                 
                 System.out.println(a.toString());
                 
@@ -451,7 +434,6 @@ public class TelaAluno extends javax.swing.JFrame {
         cpfAluno.setText("");
         jTEmail.setText("");
         jFTelefone.setText("");
-        jTEndereco.setText("");
     
 }
 
@@ -461,16 +443,14 @@ public class TelaAluno extends javax.swing.JFrame {
         if (linha >= 0) {
 
             Object oNome = tabelaAlunos.getValueAt(linha, 0);
-            Object oCpf = tabelaAlunos.getValueAt(linha, 2);
-            Object oEndereco = tabelaAlunos.getValueAt(linha, 3);
-            Object oEmail = tabelaAlunos.getValueAt(linha, 4);
-            Object oTelefone = tabelaAlunos.getValueAt(linha, 5);
+            Object oCpf = tabelaAlunos.getValueAt(linha, 1);
+            Object oEmail = tabelaAlunos.getValueAt(linha, 2);
+            Object oTelefone = tabelaAlunos.getValueAt(linha, 3);
             
             JtNome.setText(oNome.toString());
             cpfAluno.setText(oCpf.toString());
             jTEmail.setText(oEmail.toString());
             jFTelefone.setText(oTelefone.toString());
-            jTEndereco.setText(oEndereco.toString());
             
         
         }
@@ -494,13 +474,13 @@ public class TelaAluno extends javax.swing.JFrame {
     private void buscarAlunoCpf() throws IOException, ClassNotFoundException {
         
         String cpf = cpfBusca.getText();
-        CadastroAlunos aluno = daoAluno.buscarAlunoCpf(cpf);
+        Aluno aluno = daoAluno.buscarAlunoCpf(cpf);
         
         List<CadastroAluno> lista = new ArrayList<>();
         CadastroAluno e = null;
         lista.add(e);
         
        //tabela.addList(lista);
-        //tabelaAlunos.setModel(tabela);
+       tabelaAlunos.setModel(tabela);
     }
 }

@@ -14,7 +14,8 @@ import java.util.Objects;
  *
  * @author kiel
  */
-public class CadastroAlunos extends Pessoa implements Serializable{
+
+public class Aluno extends Pessoa implements Serializable{
     
     private TipoPP instituicao;
     private String contatoEmail;
@@ -22,8 +23,11 @@ public class CadastroAlunos extends Pessoa implements Serializable{
     private String curso;
     private String cidadeInstituicao;
     private String horarios;
-
-    public CadastroAlunos(TipoPP instituicao, String contatoEmail, String contatoTelefone, String curso, String cidadeInstituicao, String horarios, String nome, String cpf, String matricula, LocalDate nascimento) {
+    
+    public Aluno(){
+    }
+    
+    public Aluno(TipoPP instituicao, String contatoEmail, String contatoTelefone, String curso, String cidadeInstituicao, String horarios, String nome, String cpf, String matricula, LocalDate nascimento) {
         super(nome, cpf, matricula, nascimento);
         this.instituicao=null;
         this.contatoEmail = contatoEmail;
@@ -104,7 +108,7 @@ public class CadastroAlunos extends Pessoa implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final CadastroAlunos other = (CadastroAlunos) obj;
+        final Aluno other = (Aluno) obj;
         if (!Objects.equals(this.contatoEmail, other.contatoEmail)) {
             return false;
         }

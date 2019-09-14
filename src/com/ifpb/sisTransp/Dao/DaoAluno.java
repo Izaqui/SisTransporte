@@ -6,7 +6,7 @@
 package com.ifpb.sisTransp.Dao;
 
 import com.ifpb.sisTransp.interfaces.IdaoAluno;
-import com.ifpb.sisTransp.modelos.CadastroAlunos;
+import com.ifpb.sisTransp.modelos.Aluno;
 import com.ifpb.sisTransp.modelos.Instituicao;
 import java.io.File;
 import java.io.FileInputStream;
@@ -41,20 +41,20 @@ public class DaoAluno implements IdaoAluno{
     }
     
     @Override
-    public boolean addAluno(CadastroAlunos aluno) throws IOException, ClassNotFoundException{
+    public boolean addAluno(Aluno aluno) throws IOException, ClassNotFoundException{
         
-        List<CadastroAlunos> listaAluno;        
+        List<Aluno> listaAluno;        
         
         if (arquivo.length() > 0) {
             ObjectInputStream in = new ObjectInputStream(
                     new FileInputStream(arquivo));
 
-            listaAluno = (List<CadastroAlunos>) in.readObject();
+            listaAluno = (List<Aluno>) in.readObject();
         } else {
             listaAluno = new ArrayList<>();
         }
         
-        for(CadastroAlunos a : listaAluno){
+        for(Aluno a : listaAluno){
             if(a.getCpf().equals(aluno.getCpf())){
                 return false;
             }
@@ -77,13 +77,13 @@ public class DaoAluno implements IdaoAluno{
     @Override
     public boolean RemoveAluno(String cpf) throws IOException, ClassNotFoundException{
         
-        List<CadastroAlunos> listaAluno;        
+        List<Aluno> listaAluno;        
         
         if (arquivo.length() > 0) {
             ObjectInputStream in = new ObjectInputStream(
                     new FileInputStream(arquivo));
 
-            listaAluno = (List<CadastroAlunos>) in.readObject();
+            listaAluno = (List<Aluno>) in.readObject();
         } else {
             return false;
         }
@@ -103,14 +103,14 @@ public class DaoAluno implements IdaoAluno{
         return false;
     }
 
-    public boolean atualizarAluno(String cpf, CadastroAlunos aluno, Instituicao instituicao) throws IOException, ClassNotFoundException{
-        List<CadastroAlunos> listaAluno;        
+    public boolean atualizarAluno(String cpf, Aluno aluno, Instituicao instituicao) throws IOException, ClassNotFoundException{
+        List<Aluno> listaAluno;        
         
         if (arquivo.length() > 0) {
             ObjectInputStream in = new ObjectInputStream(
                     new FileInputStream(arquivo));
 
-            listaAluno = (List<CadastroAlunos>) in.readObject();
+            listaAluno = (List<Aluno>) in.readObject();
         } else {
             listaAluno = new ArrayList<>();
         }
@@ -139,8 +139,8 @@ public class DaoAluno implements IdaoAluno{
     }
 
     @Override
-    public CadastroAlunos buscarAlunoCpf(String cpf) throws IOException, ClassNotFoundException{
-        for(CadastroAlunos a : listarAluno()){
+    public Aluno buscarAlunoCpf(String cpf) throws IOException, ClassNotFoundException{
+        for(Aluno a : listarAluno()){
             if(a.getCpf().equals(cpf))
                 return a;
         }
@@ -148,19 +148,19 @@ public class DaoAluno implements IdaoAluno{
     }
 
     @Override
-    public List<CadastroAlunos> listarAluno() throws IOException, ClassNotFoundException{
+    public List<Aluno> listarAluno() throws IOException, ClassNotFoundException{
         if (arquivo.length() > 0) {
             ObjectInputStream in = new ObjectInputStream(
                     new FileInputStream(arquivo));
 
-            return (List<CadastroAlunos>) in.readObject();
+            return (List<Aluno>) in.readObject();
         } else {
             return new ArrayList<>();
         }
     }
 
     @Override
-    public boolean atualizarAluno(String cpf, CadastroAlunos aluno) throws IOException, ClassNotFoundException {
+    public boolean atualizarAluno(String cpf, Aluno aluno) throws IOException, ClassNotFoundException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
