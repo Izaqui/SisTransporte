@@ -225,8 +225,10 @@ public class Login extends javax.swing.JFrame {
     private void autenticarAdm() throws IOException, ClassNotFoundException {
        String email = jTextEmail.getText();
        String senha = String.valueOf(Password.getPassword());
-       
+        System.out.println(email);
+        System.out.println(senha);
         AdmCadastro adm = daoA.buscarAdministrador(email, senha);
+        System.out.println(adm.getEmail());
         if(adm.getSenha().equals(senha)){
             new Menu().setVisible(true);
             this.dispose();

@@ -5,6 +5,7 @@
  */
 package com.ifpb.sisTransp.modelos;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -12,7 +13,7 @@ import java.util.Objects;
  *
  * @author kiel
  */
-public class AdmCadastro extends Pessoa {
+public class AdmCadastro extends Pessoa implements Serializable{
     
     private String cargo;
     private String nickname;

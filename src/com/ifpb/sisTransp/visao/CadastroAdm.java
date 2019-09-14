@@ -202,8 +202,9 @@ public class CadastroAdm extends javax.swing.JFrame {
         String nickname = textApelido.getText();
         String email = textEmail.getText();
         
-        String senha = Arrays.toString(passSenha.getPassword());
-        String confirmacaoSenha = Arrays.toString(passConfirmSenha.getPassword());
+//        String senha = Arrays.toString(passSenha.getPassword());
+        String senha = String.valueOf(passSenha.getPassword());
+        String confirmacaoSenha = String.valueOf(passConfirmSenha.getPassword());
         
 //        Verificar se as senhas digitadas sao diferentes para avisar ao usuario
         if (! (senha.isEmpty() ||confirmacaoSenha.isEmpty() || senha.equals(confirmacaoSenha))) {

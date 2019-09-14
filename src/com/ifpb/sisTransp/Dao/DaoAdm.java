@@ -28,7 +28,7 @@ public class DaoAdm implements IdaoAdm{
     private AdmCadastro administrador;
     public DaoAdm(){
     
-        arquivo = new File("Adm.txt");
+        arquivo = new File("Adm.bin");
         
         if (!arquivo.exists()) {
          
@@ -130,11 +130,16 @@ public class DaoAdm implements IdaoAdm{
     @Override
     public AdmCadastro buscarAdministrador(String email, String senha) throws IOException, ClassNotFoundException {
      for(AdmCadastro a : listarAdministrador()){
-            if((a.getEmail().equals(email)) && (a.getSenha()).equals(senha))
+            System.out.println(a.getEmail());
+            System.out.println(a.getSenha());
+            if((a.getEmail().equals(email)) && (a.getSenha()).equals(senha)){
                 return a;
+            }
         }
         return null;   
+        
     }
+
 
     @Override
     public List<AdmCadastro> listarAdministrador() throws IOException, ClassNotFoundException {

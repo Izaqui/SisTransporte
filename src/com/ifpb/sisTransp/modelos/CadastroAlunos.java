@@ -6,6 +6,7 @@
 package com.ifpb.sisTransp.modelos;
 
 import static com.ifpb.sisTransp.modelos.TipoPP.PUBLICA;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -13,7 +14,7 @@ import java.util.Objects;
  *
  * @author kiel
  */
-public class CadastroAlunos extends Pessoa{
+public class CadastroAlunos extends Pessoa implements Serializable{
     
     private TipoPP instituicao;
     private String contatoEmail;

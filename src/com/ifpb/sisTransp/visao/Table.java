@@ -6,6 +6,7 @@
 package com.ifpb.sisTransp.visao;
 
 import com.ifpb.sisTransp.Dao.DaoAluno;
+import com.ifpb.sisTransp.modelos.CadastroAlunos;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -16,7 +17,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class Table extends AbstractTableModel{
    
-    private List<Alunos> alunoLista = new ArrayList<>();
+    private List<CadastroAlunos> alunoLista = new ArrayList<>();
     private final String [] colunas = {"Nome", "CPF","Matricula","Data de Nascimento","Instituição","Cidade","Curso","Email","Telefone","Horarios"};
 
     @Override
@@ -42,25 +43,25 @@ public class Table extends AbstractTableModel{
         switch(coluna){
         
             case 0:
-                return alunoLista.getClass(linha).getNome();
+                return alunoLista.get(linha).getNome();
             case 1:
-                return alunoLista.getClass(linha).getCpf();
+                return alunoLista.get(linha).getCpf();
             case 2:
-                return alunoLista.getClass(linha).getMatricula();
+                return alunoLista.get(linha).getMatricula();
             case 3:
-                return alunoLista.getClass(linha).getNascimento();
+                return alunoLista.get(linha).getNascimento();
             case 4:
-                return alunoLista.getClass(linha).getInstituicao();
+                return alunoLista.get(linha).getInstituicao();
             case 5:
-                return alunoLista.getClass(linha).getCidade();
+                return alunoLista.get(linha).getCidadeInstituicao();
             case 6:
-                return alunoLista.getClass(linha).getCurso();
+                return alunoLista.get(linha).getCurso();
             case 7:
-                return alunoLista.getClass(linha).getEmail();
+                return alunoLista.get(linha).getContatoEmail();
             case 8:
-                return alunoLista.getClass(linha).getTelefone();
+                return alunoLista.get(linha).getContatoTelefone();
             case 9:
-                return alunoLista.getClass(linha).getHorario();
+                return alunoLista.get(linha).getHorarios();
         }
         return null;
     }
@@ -72,14 +73,14 @@ public class Table extends AbstractTableModel{
         
     }
     
-   public void addRow(){
+   public void addRow(CadastroAlunos a){
    
        this.alunoLista.add(a);
        this.fireTableDataChanged();
        
    } 
    
-   public void addList(List<Aluno> lista){
+   public void addList(List<CadastroAlunos> lista){
    
        this.alunoLista = lista;
        this.fireTableDataChanged();
