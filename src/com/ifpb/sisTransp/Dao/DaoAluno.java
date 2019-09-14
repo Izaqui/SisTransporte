@@ -7,6 +7,7 @@ package com.ifpb.sisTransp.Dao;
 
 import com.ifpb.sisTransp.interfaces.IdaoAluno;
 import com.ifpb.sisTransp.modelos.CadastroAlunos;
+import com.ifpb.sisTransp.modelos.Instituicao;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -102,8 +103,7 @@ public class DaoAluno implements IdaoAluno{
         return false;
     }
 
-    @Override
-    public boolean atualizarAluno(String cpf, CadastroAlunos aluno) throws IOException, ClassNotFoundException{
+    public boolean atualizarAluno(String cpf, CadastroAlunos aluno, Instituicao instituicao) throws IOException, ClassNotFoundException{
         List<CadastroAlunos> listaAluno;        
         
         if (arquivo.length() > 0) {
@@ -118,7 +118,7 @@ public class DaoAluno implements IdaoAluno{
         for(int i=0; i<listaAluno.size(); i++){
             if(listaAluno.get(i).getCpf().equals(cpf)){
                 listaAluno.get(i).setContatoEmail(aluno.getContatoEmail());
-                listaAluno.get(i).setInstituicao(aluno.getInstituicao());
+                listaAluno.get(i).setInstituicao(instituicao);
                 listaAluno.get(i).setContatoTelefone(aluno.getContatoTelefone());
                 listaAluno.get(i).setNascimento(aluno.getNascimento());
                 listaAluno.get(i).setNome(aluno.getNome());
@@ -127,10 +127,10 @@ public class DaoAluno implements IdaoAluno{
                 listaAluno.get(i).setHorarios(aluno.getHorarios());
                 listaAluno.get(i).setMatricula(aluno.getMatricula());
                 
-                ObjectOutputStream out = new ObjectOutputStream(
-                    new FileOutputStream(arquivo));
-                out.writeObject(listaAluno);
-                out.close();
+                try (ObjectOutputStream out = new ObjectOutputStream(
+                        new FileOutputStream(arquivo))) {
+                    out.writeObject(listaAluno);
+                }
                 return true;
             }
         }
@@ -157,6 +157,11 @@ public class DaoAluno implements IdaoAluno{
         } else {
             return new ArrayList<>();
         }
+    }
+
+    @Override
+    public boolean atualizarAluno(String cpf, CadastroAlunos aluno) throws IOException, ClassNotFoundException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

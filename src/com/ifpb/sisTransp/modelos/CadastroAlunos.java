@@ -5,6 +5,7 @@
  */
 package com.ifpb.sisTransp.modelos;
 
+import static com.ifpb.sisTransp.modelos.TipoPP.PUBLICA;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -14,16 +15,16 @@ import java.util.Objects;
  */
 public class CadastroAlunos extends Pessoa{
     
-    private Instituicao instituicao;
+    private TipoPP instituicao;
     private String contatoEmail;
     private String contatoTelefone;
     private String curso;
     private String cidadeInstituicao;
     private String horarios;
 
-    public CadastroAlunos(Instituicao instituicao, String contatoEmail, String contatoTelefone, String curso, String cidadeInstituicao, String horarios, String nome, String cpf, String matricula, LocalDate nascimento) {
+    public CadastroAlunos(TipoPP instituicao, String contatoEmail, String contatoTelefone, String curso, String cidadeInstituicao, String horarios, String nome, String cpf, String matricula, LocalDate nascimento) {
         super(nome, cpf, matricula, nascimento);
-        this.instituicao = instituicao;
+        this.instituicao=null;
         this.contatoEmail = contatoEmail;
         this.contatoTelefone = contatoTelefone;
         this.curso = curso;
@@ -31,12 +32,12 @@ public class CadastroAlunos extends Pessoa{
         this.horarios = horarios;
     }
 
-    public Instituicao getInstituicao() {
+    public TipoPP getInstituicao() {
         return instituicao;
     }
 
     public void setInstituicao(Instituicao instituicao) {
-        this.instituicao = instituicao;
+        this.instituicao=null;
     }
 
     public String getContatoEmail() {
@@ -118,10 +119,7 @@ public class CadastroAlunos extends Pessoa{
         if (!Objects.equals(this.horarios, other.horarios)) {
             return false;
         }
-        if (!Objects.equals(this.instituicao, other.instituicao)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.instituicao, other.instituicao);
     }
     
     

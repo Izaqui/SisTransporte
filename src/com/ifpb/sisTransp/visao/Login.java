@@ -11,17 +11,19 @@ import com.ifpb.sisTransp.modelos.Pessoa;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author kiel
  */
 public class Login extends javax.swing.JFrame {
-
+    private final DaoAdm daoA;
     /**
      * Creates new form Login
      */
     public Login() {
+        daoA = new DaoAdm();
         initComponents();
     }
 
@@ -37,7 +39,7 @@ public class Login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextEmailApelido = new javax.swing.JTextField();
+        jTextEmail = new javax.swing.JTextField();
         Password = new javax.swing.JPasswordField();
         jBEnter = new javax.swing.JButton();
         jBCadastra = new javax.swing.JButton();
@@ -55,9 +57,9 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(111, 234, 81));
         jLabel3.setText("SENHA:");
 
-        jTextEmailApelido.addActionListener(new java.awt.event.ActionListener() {
+        jTextEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextEmailApelidoActionPerformed(evt);
+                jTextEmailActionPerformed(evt);
             }
         });
 
@@ -109,7 +111,7 @@ public class Login extends javax.swing.JFrame {
                                     .addComponent(jLabel2))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextEmailApelido)
+                                    .addComponent(jTextEmail)
                                     .addComponent(Password, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))))))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
@@ -121,7 +123,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextEmailApelido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
@@ -136,10 +138,10 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextEmailApelidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextEmailApelidoActionPerformed
+    private void jTextEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextEmailActionPerformed
         
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextEmailApelidoActionPerformed
+    }//GEN-LAST:event_jTextEmailActionPerformed
 
     private void PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordActionPerformed
 
@@ -147,11 +149,21 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_PasswordActionPerformed
 
     private void jBCadastraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastraActionPerformed
-        new CadastroAdm().setVisible(true);
-        this.setVisible(false);
+        //new CadastroAdm().setVisible(true);
+        //this.setVisible(false);
+        String token = JOptionPane.showInputDialog("Digite o token de ADM");
+        if(token.equals("123456")){
+            new CadastroAdm().setVisible(true);
+            this.dispose();
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Token incorreto");
+    }
         // TODO add your handling code here:
     }//GEN-LAST:event_jBCadastraActionPerformed
-
+    private boolean Admin(String admEmail, String senha) {
+        return admEmail.equals("admin") && senha.equals("admin");
+    }
     private void jBEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEnterActionPerformed
 
         try {
@@ -194,6 +206,7 @@ public class Login extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Login().setVisible(true);
             }
@@ -207,14 +220,23 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextEmailApelido;
+    private javax.swing.JTextField jTextEmail;
     // End of variables declaration//GEN-END:variables
     private void autenticarAdm() throws IOException, ClassNotFoundException {
-       String email = jTextEmailApelido.getText();
+       String email = jTextEmail.getText();
        String senha = String.valueOf(Password.getPassword());
        
-        //AdmC       a.setEndereco(endereco);
-         //AdmCadastro adm = IdaoAdm.buscarAdministrador(email);
+        AdmCadastro adm = daoA.buscarAdministrador(email, senha);
+        if(adm.getSenha().equals(senha)){
+            new Menu().setVisible(true);
+            this.dispose();
+            
+        }
+    } 
+   
+        /*String email = jTextEmailApelido.getText();
+       String senha = String.valueOf(Password.getPassword());
+
         DaoAdm dao = new DaoAdm();
         AdmCadastro adm = new AdmCadastro();
         
@@ -225,11 +247,11 @@ public class Login extends javax.swing.JFrame {
             System.out.println(a.getNome());
         }
         
-        if(adm == null){
+        if(adm != null){
             new Menu().setVisible(true);
             this.dispose();
             
         }
         
-    }
+    }*/
 }

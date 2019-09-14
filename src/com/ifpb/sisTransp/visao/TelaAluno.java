@@ -23,7 +23,7 @@ public class TelaAluno extends javax.swing.JFrame {
     /**
      * Creates new form TelaAtualizar
      */
-    public String tabela; 
+    public Table tabela; 
     private String email;
     private DaoAluno daoAluno;
     
@@ -34,7 +34,7 @@ public class TelaAluno extends javax.swing.JFrame {
     public TelaAluno(String email) {
         initComponents();
         this.email = email;
-        tabela = new String();
+        tabela = new Table();
         daoAluno = new DaoAluno();
         inicializarTabela();
     }
@@ -345,18 +345,20 @@ public class TelaAluno extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(this.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            //java.util.logging.Logger.getLogger(this.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaAtualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaAtualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaAtualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAluno
+                    .class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new TelaAluno().setVisible(true);
             }
@@ -495,9 +497,10 @@ public class TelaAluno extends javax.swing.JFrame {
         CadastroAlunos aluno = daoAluno.buscarAlunoCpf(cpf);
         
         List<CadastroAluno> lista = new ArrayList<>();
-        //lista.add(aluno);
+        CadastroAluno e = null;
+        lista.add(e);
         
-       // tabela.addList(lista);
+       //tabela.addList(lista);
         //tabelaAlunos.setModel(tabela);
     }
 }

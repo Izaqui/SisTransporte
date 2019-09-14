@@ -5,6 +5,8 @@
  */
 package com.ifpb.sisTransp.modelos;
 
+import java.util.Objects;
+
 /**
  *
  * @author kiel
@@ -56,6 +58,44 @@ public class Instituicao {
     public void setTipoPublicPrivate(TipoPP tipoPublicPrivate) {
         this.tipoPublicPrivate = tipoPublicPrivate;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 79 * hash + Objects.hashCode(this.nomeInstituicao);
+        hash = 79 * hash + Objects.hashCode(this.localidade);
+        hash = 79 * hash + Objects.hashCode(this.horariosFuncionamento);
+        hash = 79 * hash + Objects.hashCode(this.tipoPublicPrivate);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Instituicao other = (Instituicao) obj;
+        if (!Objects.equals(this.nomeInstituicao, other.nomeInstituicao)) {
+            return false;
+        }
+        if (!Objects.equals(this.localidade, other.localidade)) {
+            return false;
+        }
+        if (!Objects.equals(this.horariosFuncionamento, other.horariosFuncionamento)) {
+            return false;
+        }
+        if (this.tipoPublicPrivate != other.tipoPublicPrivate) {
+            return false;
+        }
+        return true;
+    }
+    
     
     
     

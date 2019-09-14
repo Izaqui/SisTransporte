@@ -6,6 +6,7 @@
 package com.ifpb.sisTransp.modelos;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  *
@@ -56,6 +57,43 @@ public class Motorista extends Pessoa{
 
     public void setDistrabalho(String Distrabalho) {
         this.Distrabalho = Distrabalho;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.rotas);
+        hash = 29 * hash + this.quantMaximaAlunos;
+        hash = 29 * hash + Objects.hashCode(this.horariosTrabalho);
+        hash = 29 * hash + Objects.hashCode(this.Distrabalho);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Motorista other = (Motorista) obj;
+        if (this.quantMaximaAlunos != other.quantMaximaAlunos) {
+            return false;
+        }
+        if (!Objects.equals(this.rotas, other.rotas)) {
+            return false;
+        }
+        if (!Objects.equals(this.horariosTrabalho, other.horariosTrabalho)) {
+            return false;
+        }
+        if (!Objects.equals(this.Distrabalho, other.Distrabalho)) {
+            return false;
+        }
+        return true;
     }
     
     
