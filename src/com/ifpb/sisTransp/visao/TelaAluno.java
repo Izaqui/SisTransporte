@@ -155,6 +155,15 @@ public class TelaAluno extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabelaAlunos.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                tabelaAlunosAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         tabelaAlunos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 tabelaAlunosMousePressed(evt);
@@ -302,9 +311,9 @@ public class TelaAluno extends javax.swing.JFrame {
 
     private void jBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarActionPerformed
         try {
-
+            
             editarAluno();
-
+            
             // TODO add your handling code here:
         } catch (IOException ex) {
             Logger.getLogger(TelaAluno.class.getName()).log(Level.SEVERE, null, ex);
@@ -327,6 +336,10 @@ public class TelaAluno extends javax.swing.JFrame {
     private void jFTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTelefoneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFTelefoneActionPerformed
+
+    private void tabelaAlunosAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tabelaAlunosAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tabelaAlunosAncestorAdded
 
     /**
      * @param args the command line arguments
@@ -422,17 +435,18 @@ public class TelaAluno extends javax.swing.JFrame {
                 //Dados para atualizar
                 String cpfAntigo = oID.toString();
                 
-                //String nome = JtNome.getText();
-               // String cpfNovo = cpfAluno.getText();
-                //String email = jTEmail.getText();
-               // String telefone = jFTelefone.getText();
+                String nome = JtNome.getText();
+                String cpfNovo = cpfAluno.getText();
+                String emailAlu = jTEmail.getText();
+                String telefone = jFTelefone.getText();
+               
                 
                 //atualizar dados
                 Aluno a = daoAluno.buscarAlunoCpf(cpfAntigo);
-                a.setNome(JtNome.getText());
-                a.setCpf(cpfAluno.getText());
-                a.setContatoEmail(cpfAluno.getText());
-                a.setContatoTelefone(cpfAluno.getText());
+                a.setNome(nome);
+                a.setCpf(cpfNovo);
+                a.setContatoEmail(email);
+                a.setContatoTelefone(telefone);
                 
                 System.out.println(a.toString());
                 
@@ -458,9 +472,9 @@ public class TelaAluno extends javax.swing.JFrame {
         if (linha >= 0) {
 
             Object oNome = tabelaAlunos.getValueAt(linha, 0);
-            Object oCpf = tabelaAlunos.getValueAt(linha, 2);
-            Object oEmail = tabelaAlunos.getValueAt(linha, 3);
-            Object oTelefone = tabelaAlunos.getValueAt(linha, 4);
+            Object oCpf = tabelaAlunos.getValueAt(linha, 1);
+            Object oEmail = tabelaAlunos.getValueAt(linha, 7);
+            Object oTelefone = tabelaAlunos.getValueAt(linha, 8);
             
             JtNome.setText(oNome.toString());
             cpfAluno.setText(oCpf.toString());
@@ -476,11 +490,11 @@ public class TelaAluno extends javax.swing.JFrame {
     private void apagarAluno() throws IOException, ClassNotFoundException {
         int linha = tabelaAlunos.getSelectedRow();
         if (linha >= 0) {
-                Object o = tabelaAlunos.getValueAt(linha, 2);
+                Object o = tabelaAlunos.getValueAt(linha, 1);
                 String cpf = o.toString();
                 
-                daoAluno.RemoveAluno(cpf    );
-                limparCampos();
+                daoAluno.RemoveAluno(cpf);
+                
                 inicializarTabela();
     
         }

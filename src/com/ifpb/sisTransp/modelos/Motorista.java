@@ -25,6 +25,10 @@ public class Motorista extends Pessoa{
         this.horariosTrabalho = horariosTrabalho;
         this.Distrabalho = Distrabalho;
     }
+
+    public Motorista() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 
     public String getRotas() {
