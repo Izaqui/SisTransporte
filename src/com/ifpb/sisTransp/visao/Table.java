@@ -85,4 +85,6 @@ public class Table extends AbstractTableModel{
        this.alunoLista = lista;
        this.fireTableDataChanged();
    }
+
+    
 }

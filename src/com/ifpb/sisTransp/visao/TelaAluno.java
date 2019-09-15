@@ -29,6 +29,10 @@ public class TelaAluno extends javax.swing.JFrame {
     
     public TelaAluno() {
         initComponents();
+        this.email = email;
+        tabela = new Table();
+        daoAluno = new DaoAluno();
+        inicializarTabela();
     }
 
     public TelaAluno(String email) {
@@ -63,7 +67,7 @@ public class TelaAluno extends javax.swing.JFrame {
         jTEmail = new javax.swing.JTextField();
         jFTelefone = new javax.swing.JFormattedTextField();
         jBEditar = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBApagar = new javax.swing.JButton();
         jBsair = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelaAlunos = new javax.swing.JTable();
@@ -124,11 +128,11 @@ public class TelaAluno extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jButton3.setText("Apagar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jBApagar.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jBApagar.setText("Apagar");
+        jBApagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jBApagarActionPerformed(evt);
             }
         });
 
@@ -193,7 +197,7 @@ public class TelaAluno extends javax.swing.JFrame {
                 .addGap(99, 99, 99)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBApagar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBsair, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(680, 680, 680))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -229,7 +233,7 @@ public class TelaAluno extends javax.swing.JFrame {
                                 .addGap(1, 1, 1)
                                 .addComponent(jBEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jBApagar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jBsair, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -277,7 +281,7 @@ public class TelaAluno extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jBsairActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jBApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBApagarActionPerformed
         try {
             apagarAluno();
         } catch (IOException ex) {
@@ -285,7 +289,7 @@ public class TelaAluno extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(TelaAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jBApagarActionPerformed
 
     private void jBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarActionPerformed
         try {
@@ -356,10 +360,10 @@ public class TelaAluno extends javax.swing.JFrame {
     private javax.swing.JTextField JtNome;
     private javax.swing.JFormattedTextField cpfAluno;
     private javax.swing.JTextField cpfBusca;
+    private javax.swing.JButton jBApagar;
     private javax.swing.JButton jBEditar;
     private javax.swing.JButton jBPesquisa;
     private javax.swing.JButton jBsair;
-    private javax.swing.JButton jButton3;
     private javax.swing.JFormattedTextField jFTelefone;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -381,15 +385,17 @@ public class TelaAluno extends javax.swing.JFrame {
         try {
             List<Aluno> listaAlunos = new ArrayList<>(); 
             listaAlunos = daoAluno.listarAluno();
-            //tabela.addList(listaAlunos);
-           // tabelaAlunos.setModel(tabela);
+            for(Aluno a : listaAlunos){
+                System.out.println(a.getNome());
+            }
+            System.out.println("NADAD");
+            tabela.addList(listaAlunos);
+            tabelaAlunos.setModel(tabela);
         } catch (IOException ex) {
             Logger.getLogger(TelaAluno.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(TelaAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
-         
-            
        
 
     }
@@ -443,9 +449,9 @@ public class TelaAluno extends javax.swing.JFrame {
         if (linha >= 0) {
 
             Object oNome = tabelaAlunos.getValueAt(linha, 0);
-            Object oCpf = tabelaAlunos.getValueAt(linha, 1);
-            Object oEmail = tabelaAlunos.getValueAt(linha, 2);
-            Object oTelefone = tabelaAlunos.getValueAt(linha, 3);
+            Object oCpf = tabelaAlunos.getValueAt(linha, 2);
+            Object oEmail = tabelaAlunos.getValueAt(linha, 3);
+            Object oTelefone = tabelaAlunos.getValueAt(linha, 4);
             
             JtNome.setText(oNome.toString());
             cpfAluno.setText(oCpf.toString());
@@ -476,11 +482,10 @@ public class TelaAluno extends javax.swing.JFrame {
         String cpf = cpfBusca.getText();
         Aluno aluno = daoAluno.buscarAlunoCpf(cpf);
         
-        List<CadastroAluno> lista = new ArrayList<>();
-        CadastroAluno e = null;
-        lista.add(e);
+        List<Aluno> lista = new ArrayList<>();
+        lista.add(aluno);
         
-       //tabela.addList(lista);
-       tabelaAlunos.setModel(tabela);
+        tabela.addList(lista);
+        tabelaAlunos.setModel(tabela);
     }
 }

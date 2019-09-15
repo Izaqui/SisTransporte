@@ -88,7 +88,7 @@
                   <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jBEditar" min="-2" pref="112" max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" pref="112" max="-2" attributes="0"/>
+                      <Component id="jBApagar" min="-2" pref="112" max="-2" attributes="0"/>
                       <Component id="jBsair" min="-2" pref="112" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="680" max="-2" attributes="0"/>
@@ -133,7 +133,7 @@
                                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                   <Component id="jBEditar" min="-2" pref="50" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jButton3" min="-2" pref="56" max="-2" attributes="0"/>
+                                  <Component id="jBApagar" min="-2" pref="56" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jBsair" min="-2" pref="56" max="-2" attributes="0"/>
                               </Group>
@@ -256,7 +256,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBEditarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="jBApagar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SansSerif" size="18" style="1"/>
@@ -264,7 +264,7 @@
             <Property name="text" type="java.lang.String" value="Apagar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBApagarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBsair">
