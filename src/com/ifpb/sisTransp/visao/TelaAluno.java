@@ -445,12 +445,12 @@ public class TelaAluno extends javax.swing.JFrame {
                 Aluno a = daoAluno.buscarAlunoCpf(cpfAntigo);
                 a.setNome(nome);
                 a.setCpf(cpfNovo);
-                a.setContatoEmail(email);
+                a.setContatoEmail(emailAlu);
                 a.setContatoTelefone(telefone);
                 
                 System.out.println(a.toString());
                 
-                daoAluno.atualizarAluno(cpfAntigo, a);
+                daoAluno.atualizarAluno(cpfNovo, a);
   
                 limparCampos();
                 inicializarTabela();
@@ -496,6 +496,7 @@ public class TelaAluno extends javax.swing.JFrame {
                 daoAluno.RemoveAluno(cpf);
                 
                 inicializarTabela();
+                limparCampos();
     
         }
     }
