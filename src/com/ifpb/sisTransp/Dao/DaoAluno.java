@@ -78,7 +78,6 @@ public class DaoAluno implements IdaoAluno{
     public boolean RemoveAluno(String cpf) throws IOException, ClassNotFoundException{
         
         List<Aluno> listaAluno;        
-        
         if (arquivo.length() > 0) {
             ObjectInputStream in = new ObjectInputStream(
                     new FileInputStream(arquivo));
@@ -93,9 +92,9 @@ public class DaoAluno implements IdaoAluno{
         
             if(listaAluno.get(i).getCpf().equals(cpf)){
                 listaAluno.remove(i); 
-                ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(arquivo));
-                out.writeObject(listaAluno);
-                out.close();
+                try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(arquivo))) {
+                    out.writeObject(listaAluno);
+                }
                 return true;
             }
             
