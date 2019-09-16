@@ -405,7 +405,7 @@ public class TelaAluno extends javax.swing.JFrame {
             
             
         try {
-            List<Aluno> listaAlunos = new ArrayList<Aluno>(); 
+            List<Aluno> listaAlunos = new ArrayList<>(); 
             listaAlunos = daoAluno.listarAluno();
             for(Aluno a : listaAlunos){
                 System.out.println(a.getNome());

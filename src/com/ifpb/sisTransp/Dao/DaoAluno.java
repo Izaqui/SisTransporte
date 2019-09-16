@@ -102,7 +102,7 @@ public class DaoAluno implements IdaoAluno{
         return false;
     }
 
-    public boolean atualizarAluno(String cpf, Aluno aluno, Instituicao instituicao) throws IOException, ClassNotFoundException{
+    public boolean atualizarAluno(String cpf, Aluno aluno) throws IOException, ClassNotFoundException{
         List<Aluno> listaAluno;        
         
         if (arquivo.length() > 0) {
@@ -117,6 +117,7 @@ public class DaoAluno implements IdaoAluno{
         for(int i=0; i<listaAluno.size(); i++){
             if(listaAluno.get(i).getCpf().equals(cpf)){
                 listaAluno.get(i).setContatoEmail(aluno.getContatoEmail());
+                Instituicao instituicao = null;
                 listaAluno.get(i).setInstituicao(instituicao);
                 listaAluno.get(i).setContatoTelefone(aluno.getContatoTelefone());
                 listaAluno.get(i).setNascimento(aluno.getNascimento());
@@ -158,9 +159,9 @@ public class DaoAluno implements IdaoAluno{
         }
     }
 
-    @Override
-    public boolean atualizarAluno(String cpf, Aluno aluno) throws IOException, ClassNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   // @Override
+    //public boolean atualizarAluno(String cpf, Aluno aluno) throws IOException, ClassNotFoundException {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    //}
     
 }
